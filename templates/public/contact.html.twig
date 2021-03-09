@@ -11,13 +11,14 @@
     <div class="row">
         <div class="col-md-12">
             {% if submitted %}
-                {% set alert_class = 'error' %}
-
+                {% set alert_class = 'danger' %}
+                {% set alert = 'Error' %}
                 {% if success %}
                     {% set alert_class = 'success' %}
+                    {% set alert = 'Success' %}
                 {% endif %}
                 <div class="alert alert-{{ alert_class }} alert-dismissible fade show" role="alert">
-                    <strong>{{ alert_class|title }}!</strong> {{ message }}
+                    <strong>{{ alert|title }}!</strong> {{ message }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
