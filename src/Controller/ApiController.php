@@ -57,7 +57,6 @@ class ApiController extends AbstractController
             $responseCode = Response::HTTP_CREATED;
         }
 
-
         return new JsonResponse($response, $responseCode);
 
     }

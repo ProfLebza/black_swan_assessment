@@ -68,7 +68,7 @@ class PublicController extends AbstractController
     public function sendNotificationEmail(Contact $contact, Swift_Mailer $swiftMailer) {
 
         $sendToEmailAddress = $this->getParameter('system_admin_email') ?? 'lebogang.ratsoana@yahoo.com';
-        $adminName = $this->getParameter('system_mane') ?? 'Black Swan Assessment';
+        $adminName = $this->getParameter('system_name') ?? 'Black Swan Assessment';
 
         $parameters = [
             'contact' => $contact,

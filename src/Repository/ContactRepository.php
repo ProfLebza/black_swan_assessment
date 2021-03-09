@@ -21,16 +21,4 @@ class ContactRepository extends ServiceEntityRepository
         $this->manager = $entityManager;
         parent::__construct($registry, Contact::class);
     }
-
-    public function saveContact($name, $email, $message) {
-        $contact = new Contact();
-        $contact->setName($name)
-            ->setEmail($email)
-            ->setMessage($message);
-
-        $this->manager->persist($contact);
-        $this->manager->flush();
-    }
-
-
 }
