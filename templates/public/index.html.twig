@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ page_title|default('Assessment') }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-4 pt-2 pb-3 contact">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Black Swan Assessment</h1>
+                <h2>@Author: Lebogang Ratsoana</h2>
+                <h5>Task:</h5>
+
+                <ol>
+                    <li>Setup a Symfony project with the latest version of Symfony</li>
+                    <li>Create your own service  – to perform any part of the tasks below</li>
+                    <li>Create a contact entity</li>
+                    <li>
+                        Create a page with a contact form that submits data to a database,
+                        emails the user submitting the form and someone who manages the application
+
+                        Please click <a title="Contact Form" href="{{ path('contact_page') }}">here</a> to view the Contact Form
+                    </li>
+                    <li>Add ReCaptcha to the form</li>
+                    <li>Create a new entity/db record with an API call – authentication is a bonus.</li>
+                    <li>Anything else you’d like to “show off” in terms of your development skill.</li>
+                    <li>Store your work in a Github repo and send us the link to it</li>
+                </ol>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

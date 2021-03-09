@@ -1,0 +1,11 @@
+@import "base-colors/colors";
+
+body {
+    background-color: $grey;
+}
+
+.required:after {
+    content: " *";
+    color: $red;
+}
+

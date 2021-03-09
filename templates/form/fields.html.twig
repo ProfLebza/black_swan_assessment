@@ -1,0 +1,49 @@
+{#
+    Override main form row widget
+#}
+{% block form_row %}
+        {%- set customLabelClass = '' -%}
+        <div class="mb-3 form-group {{ form.vars.attr.layout_class|default('') }}
+                {% if form.vars.type|default('') is same as('file') %} custom-file rounded-0 mt-3 {% endif %}">
+
+            {% if form.vars.attr.layout_class is defined %}
+            <div class="row">
+                <div class="col-md-12 ">
+                    {% endif %}
+
+                    {{ form_label(form) }}
+                    {{ form_errors(form) }}
+
+                    {{ form_widget(form) }}
+
+                    {% if form.vars.attr.layout_class is defined %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+{% endblock form_row %}
+
+{#
+    Override error widget layout
+#}
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul class="form-widget-errors alert alert-danger alert-dismissible fade show">
+            {%- for error in errors -%}
+                <li>{{ error.message }}</li>
+            {%- endfor -%}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}
+
+
+{% block re_captcha_row %}
+    <div id="{{ id }}" data-toggle="recaptcha" data-type="{{ type }}">
+    </div>
+{% endblock %}
+
+
+

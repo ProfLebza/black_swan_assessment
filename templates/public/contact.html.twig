@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ page_title|default('Black Swan Assessment - Contact') }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4 pt-2 pb-3 contact">
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if submitted %}
+                {% set alert_class = 'error' %}
+
+                {% if success %}
+                    {% set alert_class = 'success' %}
+                {% endif %}
+                <div class="alert alert-{{ alert_class }} alert-dismissible fade show" role="alert">
+                    <strong>{{ alert_class|title }}!</strong> {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="contact-info">
+                <h2>Contact</h2>
+                <h4>Saving contact entity to database!</h4>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="contact-form">
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

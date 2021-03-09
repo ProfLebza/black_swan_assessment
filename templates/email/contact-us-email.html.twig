@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{ system_name }} - {{ subject }}</title>
+</head>
+
+<body bgcolor="#fbfbfb">
+
+<table class="head-wrap" bgcolor="#fbfbfb">
+    <tr>
+        <td></td>
+        <td class="header container">
+
+            <div class="content">
+                <table bgcolor="#fbfbfb">
+                    <tr>
+                        <td class="logo"><img alt="HST Logo" src="https://gallery.mailchimp.com/0b95f1a74d13d577eb0b91f4b/images/f31db3b6-5162-4a03-bde0-1aa37e55ff99.png" width="150px"/></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td></td>
+    </tr>
+</table>
+<table class="body-wrap">
+    <tr>
+        <td></td>
+        <td class="container" bgcolor="#fbfbfb">
+
+            <div class="content">
+                <table>
+                    <tr>
+                        <td>
+
+                            {% set contactName = contact.getName() %}
+                            {% if is_contact_us_admin is same as(true) %}
+                                {% set contactName = admin_name %}
+                            {% endif %}
+
+                            <h5>Hi {{contactName}}</h5>
+
+                            {% if is_contact_us_admin is same as(true) %}
+
+                                <p>
+                                    Please note that a contact message was submitted on the website. Below are the
+                                    details of the message:
+                                </p>
+
+
+                            {% else %}
+                            <p>
+                                Please note that your message has been submitted to {{ system_name }} admin
+                            </p>
+
+                            {% endif %}
+                            <br>
+
+                            <ul>
+                                <li><b style="width: 120px">Name:</b> {{ contact.getName() }}</li>
+                                <li><b style="width: 120px">email:</b> {{ contact.getEmail() }}</li>
+                                <li><b style="width: 120px">message:</b> {{ contact.getMessage(0) }}</li>
+                                <li>
+                                    <b style="width: 120px">Date Sent:</b>
+                                    {% if contact.getDateCreated() is not null %}
+                                        {{ contact.getDateCreated().format('Y-m-d') }}
+                                    {% endif %}
+                                </li>
+                            </ul>
+
+                            <br>
+                            <br/>
+                            <p>
+                                Kind Regards,
+                                <br>
+                                <b>{{ system_name}} Participant</b>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </td>
+        <td></td>
+    </tr>
+    <style type="text/css">
+        * {
+            margin:0;
+            padding:0;
+        }
+        * { font-family: Arial, sans-serif; }
+
+        img {
+            max-width: 100%;
+        }
+
+        body {
+            -webkit-font-smoothing:antialiased;
+            -webkit-text-size-adjust:none;
+            width: 100%!important;
+            height: 100%;
+            color: #2e353f;
+        }
+
+        a { color: #2BA6CB;}
+
+        table.head-wrap { width: 100%;}
+
+        .header.container table td.logo { padding: 15px; }
+
+
+        table.body-wrap { width: 100%;}
+
+        h5,h6 {
+            font-family: Arial, sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
+        }
+
+        h5 { font-weight:900; font-size: 17px;}
+        h6 { font-weight:900; font-size: 14px; text-transform: uppercase; color:#444;}
+
+
+        p, ul {
+            margin-bottom: 10px;
+            font-weight: normal;
+            font-size:14px;
+            line-height:1.6;
+        }
+
+        ul li {
+            margin-left:5px;
+            list-style-position: inside;
+        }
+
+        .container {
+            display:block!important;
+            max-width:600px!important;
+            margin:0 auto!important; /* makes it centered */
+            clear:both!important;
+        }
+
+        .content {
+            padding:15px;
+            max-width:600px;
+            margin:0 auto;
+            display:block;
+        }
+
+        .content table { width: 100%; }
+
+        /*.clear { display: block; clear: both; }*/
+
+    </style>
+</table>
+</body>
+</html>
