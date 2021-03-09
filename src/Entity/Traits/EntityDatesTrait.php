@@ -41,7 +41,7 @@ trait EntityDatesTrait
      * @param DateTimeInterface|null $dateCreated
      * @return EntityDatesTrait
      */
-    public function setDateCreated(?DateTimeInterface $dateCreated): EntityDatesTrait
+    public function setDateCreated(?DateTimeInterface $dateCreated): self
     {
         $this->dateCreated = $dateCreated;
         return $this;
@@ -59,16 +59,13 @@ trait EntityDatesTrait
      * @param DateTimeInterface|null $dateLastUpdated
      * @return EntityDatesTrait
      */
-    public function setDateLastUpdated(?DateTimeInterface $dateLastUpdated): EntityDatesTrait
+    public function setDateLastUpdated(?DateTimeInterface $dateLastUpdated): self
     {
         $this->dateLastUpdated = $dateLastUpdated;
         return $this;
     }
 
-    /**
-     * @ORM\PrePersist
-     * @ORM\PreUpdate
-     */
+
     public function updatedDateTimes() :void
     {
         $this->setDateLastUpdated(new DateTime());

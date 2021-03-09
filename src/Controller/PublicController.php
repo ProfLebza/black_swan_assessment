@@ -23,7 +23,7 @@ class PublicController extends AbstractController
     /**
      * @Route("/", name="home_page")
      */
-    public function index()
+    public function index(): Response
     {
 
         $response = [

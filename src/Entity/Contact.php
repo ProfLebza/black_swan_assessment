@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
  * @ORM\Table(name="contacts")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Contact
 {
@@ -102,4 +103,14 @@ class Contact
         ];
     }
 
+    /**
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+
+    public function updatedTimeStamps(): void
+    {
+        $this->updatedDateTimes();
+    }
 }
