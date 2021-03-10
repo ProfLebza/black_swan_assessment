@@ -14,3 +14,10 @@ Data fixtures will setup a user along with a token that can be used to access th
 I built something simple and quick so that I can have this assignment sent to you without delay
 
 Please also note that I am using 2 authenticators
+
+### Url rewrite documents:
+
+Please create the below files in the public folder of the project, to point the requests to index.php file
+
+    * Windows Server: web.config
+    * Linux Server: .htaccess
