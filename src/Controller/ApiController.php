@@ -46,7 +46,7 @@ class ApiController extends AbstractController
             $contactViolations = $this->validateContact($contact);
 
             if ($contactViolations->count()) {
-                return $this->handleBadRequest($contactViolations);
+                return $this->handleInvalidContactRequest($contactViolations);
             }
 
             $this->entityManager->persist($contact);
@@ -57,10 +57,12 @@ class ApiController extends AbstractController
         }
 
         return new JsonResponse($response, $responseCode);
-
     }
 
-
+    /**
+     * @param Contact $contact
+     * @return ConstraintViolationListInterface
+     */
     public function validateContact(Contact $contact): ConstraintViolationListInterface
     {
         $validator = Validation::createValidatorBuilder()
@@ -74,7 +76,7 @@ class ApiController extends AbstractController
      * @param ConstraintViolationListInterface $violations
      * @return JsonResponse
      */
-    private function handleBadRequest(ConstraintViolationListInterface $violations): JsonResponse
+    private function handleInvalidContactRequest(ConstraintViolationListInterface $violations): JsonResponse
     {
 
         $invalidFields = [];
