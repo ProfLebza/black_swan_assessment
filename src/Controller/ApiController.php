@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
@@ -29,7 +28,7 @@ class ApiController extends AbstractController
      * @param Request $request
      * @return JsonResponse
      */
-    public function add(Request $request): JsonResponse
+    public function createContact(Request $request): JsonResponse
     {
 
         $response['data'] = [];
@@ -44,10 +43,10 @@ class ApiController extends AbstractController
                 ->setEmail($response['data']['email'])
                 ->setMessage($response['data']['message']);
 
-            $contactViolation = $this->validateContact($contact);
+            $contactViolations = $this->validateContact($contact);
 
-            if ($contactViolation->count()) {
-                $this->handleBadRequest($request);
+            if ($contactViolations->count()) {
+                return $this->handleBadRequest($contactViolations);
             }
 
             $this->entityManager->persist($contact);
@@ -71,12 +70,19 @@ class ApiController extends AbstractController
         return $validator->validate($contact);
     }
 
-    private function handleBadRequest(Request $request)
+    /**
+     * @param ConstraintViolationListInterface $violations
+     * @return JsonResponse
+     */
+    private function handleBadRequest(ConstraintViolationListInterface $violations): JsonResponse
     {
-        throw new HttpException(
-            400,
-            sprintf('Invalid JSON: '.$request->getContent())
-        );
+
+        $invalidFields = [];
+        foreach($violations as $violation) {
+            $invalidFields[] = str_replace('This value', ucwords($violation->getPropertyPath()), $violation->getMessage());
+        }
+
+        return new JsonResponse(['message' => 'You submitted incorrect data - ' . implode(', ', $invalidFields)], 400);
     }
 
 
