@@ -29,3 +29,5 @@ To make an API request, make sure your headers include "X-AUTH-TOKEN" as a key, 
 To post a contact to the API, you would use the url */api/create-contact*, then add the following parameters (Send via POST method):
 
     * [name: '', email: '', message:'']
+
+[API Documentation](https://app.swaggerhub.com/apis-docs/ProfLebza/black_swan_assessment/1.0.0)
