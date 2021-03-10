@@ -21,3 +21,10 @@ Please create the below files in the public folder of the project, to point the 
 
     * Windows Server: web.config
     * Linux Server: .htaccess
+
+### API Requests
+
+To make an API request, make sure your headers include "X-AUTH-TOKEN" as a key, and your user API Token field as a value.
+To post a contact to the API, you would use the url */api/create-contact*, then add the following parameters (Send via POST method):
+
+    * [name: '', email: '', message:'']
