@@ -1,10 +1,11 @@
 # Black Swan Assessment
 
 ## Installation
-Please note that I am using yarn for my front-end packages. 
+Please note that I am using yarn for my front-end packages.
 
-Once you have run composer install, don't forget to run :
+Once you have run composer install, don't forget to run:
 
+    * composer dump-env dev/prod (Update your .env.local.php file with your envrinment's details)
     * yarn run dev/prod
     * doctrine:migrations:migrate
     * doctrine:fixtures:load
