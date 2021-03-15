@@ -48,7 +48,7 @@ class ContactType extends AbstractType
                     'mapped' => false,
                 ])
 
-            ->add('Submit', SubmitType::class, ['attr' => ['class' => 'rounded-0 btn btn-primary']])
+            ->add('Submit', SubmitType::class, ['attr' => ['class' => 'rounded-0 btn btn-secondary float-right']])
         ;
     }
 
