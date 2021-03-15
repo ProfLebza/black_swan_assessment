@@ -1,4 +1,6 @@
 {
+    "name": "blackswan/assessment",
+    "description": "An assessment task for Lebogang Ratsoana",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",

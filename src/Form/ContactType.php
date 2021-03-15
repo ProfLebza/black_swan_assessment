@@ -21,7 +21,7 @@ class ContactType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new Assert\NotBlank(),
-                    new Assert\Length(null, 3, 50)
+                    new Assert\Length(null, 2, 50)
                 ],
                 'attr' => ['class' => 'form-control rounded-0 form-control-line']
             ])
